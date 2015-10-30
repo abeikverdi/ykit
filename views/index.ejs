@@ -1,0 +1,109 @@
+<html>
+<head>
+   <% include ../views/partials/head %>
+   <script src="https://cdn.auth0.com/w2/auth0-6.7.min.js"></script>
+</head>
+<body>
+   <header id="header">
+      <div class="login">
+        <form class="login-form">
+          <div class="error" style="display:none"></div>
+          <table>
+             <thead>
+               <tr>
+                  <th>Username</th>
+                  <th>Password</th>
+               </tr>
+             </thead>
+             <tbody>
+                <tr>
+                   <td><input type="text" id="login-username" /></td>
+                   <td><input type="password" id="login-password" /></td>
+                   <td><button class="login-btn">LOGIN</button></td>
+                </tr>
+             </tbody>
+          </table>
+          
+        </form>
+      </div>
+   </header>
+   <div id="container">
+      <div class="main-banner">
+         <img src="images/bg.png"/>
+      </div>
+      
+      <div class="signup">
+         <h2>Get started with Ykit</h2>
+         <h4>Find out all about ongoing clinical trials and join the trials that are suitable for you.</h4>
+         <form class="signup-form">
+            <div class="error" style="display:none"></div>
+            <table width="100%">
+               <tbody>
+                  <tr>
+                     <td><input type="text" id="signup-firstname" placeholder="First Name" /></td>
+                     <td><input type="text" id="signup-lastname" placeholder="Last Name" /></td>
+                  </tr>
+                  <tr>
+                     <td colspan="2">
+                        <input type="text" id="signup-username" placeholder="Username" />
+                     </td>
+                  </tr>
+                  <tr>
+                     <td colspan="2">
+                        <input type="password" id="signup-password" placeholder="New Password" />
+                     </td>
+                  </tr>
+                  <tr>
+                     <td colspan="2">
+                        <input type="password" id="signup-retype-password" placeholder="Re-enter the password" />
+                     </td>
+                  </tr>
+                  <tr>
+                     <td colspan="2">
+                        <input type="text" id="signup-email" placeholder="Email" />
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <input type="radio" name="sex" value="male" checked>Male
+                        <input type="radio" name="sex" value="female">Female
+                     </td>
+                  </tr>
+                  <tr>
+                     <td colspan="2">
+                        <input type="submit" value="GET STARTED"/>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </form>
+      </div>
+   </div>
+
+<script>
+var env = <%-JSON.stringify(env)%>;
+
+console.log(env.AUTH0_CLIENT_ID);
+  var auth0 = new Auth0({
+    domain:         env.AUTH0_DOMAIN,
+    clientID:       env.AUTH0_CLIENT_ID,
+    callbackURL:    env.AUTH0_CALLBACK_URL
+  });
+
+  $('.login-btn').on('click', function() {
+    auth0.signin({
+      connection: 'foo', 
+      username: 'bar', 
+      password: 'foobar'
+    },
+    function (err, profile, id_token, access_token, state) {
+      /* 
+          store the profile and id_token in a cookie or local storage
+            $.cookie('profile', profile);
+            $.cookie('id_token', id_token);
+        */
+    });
+  });
+</script>
+</body>
+</html>
