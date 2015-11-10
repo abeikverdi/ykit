@@ -1,0 +1,18 @@
+<html>
+<head>
+  <% include ../views/partials/head %>
+  <script src="https://cdn.auth0.com/w2/auth0-6.js"></script>
+</head>
+<body>
+   <header id="header">
+      
+   </header>
+	<div id="container">
+		<p>ERROR</p>
+		<h1><%=message%></h1>
+		<h2><%=error.status%></h2>
+		<h3><%=error.stack%></h3>
+
+	</div>
+</body>
+</html>

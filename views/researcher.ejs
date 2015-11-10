@@ -1,0 +1,64 @@
+<html>
+<head>
+  <% include ../views/partials/head %>
+  <script src="/js/clndr.js"></script>
+   <link href="/stylesheets/clndr.css" rel="stylesheet">
+</head>
+<body>
+   <header>
+      <button>ONGOING</button>
+      <button id="create-research">CREATE</button>
+   </header>
+   <div id="nav">
+      
+   </div>
+   <div id="container">
+      <div id="content">
+         <div id="post">
+            <img src="images/alzhaimer.png">
+            <h2>Alzhaimer's disease</h2>
+            <p>Duration: 3 weeks</p>
+            <p>Institute: Samsung Medical Centre</p>
+            <div>
+               <img src="images/progress1.png"/>
+            </div>
+            <span>10 / 42 Enrolled</span>
+            <button>DETAILS</button>
+         </div>
+         <div id="post">
+            <img src="images/cognitive.png">
+            <h2>Cognitive disease</h2>
+            <p>Duration: 3 weeks</p>
+            <p>Institute: Samsung Medical Centre</p>
+            <div>
+               <img src="images/progress2.png"/>
+            </div>
+            <span>33 / 42 Enrolled</span>
+            <button>DETAILS</button>
+         </div>
+      </div>
+      <div id="profile">
+         <img src="images/profile.png">
+         <p class="name">YungJae Shin</p>
+         <p>010-1234-5678</p>
+         <p>Researcher of Institute</p>
+         <p>Born in 1970-1-1</p>
+         <p>Institute Samsung Medial center</p>
+         <p>Position: Clinical Research Coordinator</p>
+
+      </div>
+      <div id="calendar">
+         <div class="column_right">
+            <div class="column_right_grid calender">
+              <div class="cal1"> </div>
+           </div>
+        </div>
+      </div>
+   </div>
+   <script type="text/javascript">
+      $("#create-research").click(function(){
+         window.location.href = "/create-research";
+      });
+   </script>
+</body>
+</html>

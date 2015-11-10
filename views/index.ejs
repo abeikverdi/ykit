@@ -1,7 +1,9 @@
 <html>
 <head>
-   <% include ../views/partials/head %>
-   <script src="https://cdn.auth0.com/w2/auth0-6.7.min.js"></script>
+  <% include ../views/partials/head %>
+  <script src="//www.parsecdn.com/js/parse-1.6.7.min.js"></script>
+  <script src="/js/jquery.cookie.js"></script>
+
 </head>
 <body>
    <header id="header">
@@ -82,28 +84,47 @@
 
 <script>
 var env = <%-JSON.stringify(env)%>;
+console.log(env);
+// console.log(env.PARSE_JS_KEY);
+Parse.initialize(env.PARSE_APP_ID, env.PARSE_JS_KEY);
 
-console.log(env.AUTH0_CLIENT_ID);
-  var auth0 = new Auth0({
-    domain:         env.AUTH0_DOMAIN,
-    clientID:       env.AUTH0_CLIENT_ID,
-    callbackURL:    env.AUTH0_CALLBACK_URL
-  });
+  $(".signup-form").submit(function (e) {
+  e.preventDefault();
 
-  $('.login-btn').on('click', function() {
-    auth0.signin({
-      connection: 'foo', 
-      username: 'bar', 
-      password: 'foobar'
+  var user = new Parse.User();
+  user.set("username", $('#signup-username').val());
+  user.set("password", $('#signup-password').val());
+    user.set("email", $('#signup-email').val());
+  user.set("email", $('#signup-firstname').val());
+  user.set("email", $('#signup-lastname').val());
+  user.set("email", $('#signup-email').val());
+
+  user.signUp(null, {
+    success: function(user) {
+      window.location.href = "/researcher";
+      // Hooray! Let them use the app now.
     },
-    function (err, profile, id_token, access_token, state) {
-      /* 
-          store the profile and id_token in a cookie or local storage
-            $.cookie('profile', profile);
-            $.cookie('id_token', id_token);
-        */
-    });
+    error: function(user, error) {
+      // Show the error message somewhere and let the user try again.
+      alert("Error: " + error.code + " " + error.message);
+    }
   });
+});
+
+  $(".login-form").one('submit', (function (e) {
+    this.attr('disabled','disabled');
+    e.preventDefault();
+      Parse.User.logIn($('#login-username').val(), $('#login-password').val(), {
+        success: function(user) {
+          // Do stuff after successful login.
+          window.location.href = "/researcher";
+        },
+        error: function(user, error) {
+          // The login failed. Check error to see why.
+          alert("Error: " + error.code + " " + error.message);
+        }
+      });
+  }));
 </script>
 </body>
 </html>

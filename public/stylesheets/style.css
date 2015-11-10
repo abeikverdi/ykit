@@ -2,7 +2,15 @@ body {
     font-family: 'Roboto', sans-serif;
     margin-left: 10vw;
     margin-right: 10vw;
-
+}
+header {
+    height: 5vh;
+}
+header button{
+    float:right;
+    width: 80px;
+    margin: 5px;
+    padding: 10px;
 }
 
 input[type="submit"], button{
@@ -20,14 +28,17 @@ input[type="submit"], button{
 }
 
 #container{
-	margin-top: 5vh
+	margin-top: 5vh;
+    height:100%;
 }
 
 .main-banner {
     float:left;
 }
 
-/* Login form */
+/************************************************************************* 
+Login form 
+*************************************************************************/
 .login {
     float: right;
 }
@@ -48,7 +59,6 @@ input[type="submit"], button{
 .login .login-form button {
 	width: 100%;
 	padding: 7px;
-
 }
 
 /************************************************************************* 
@@ -88,7 +98,60 @@ Signup form
 .signup .signup-form table input[type=radio]{
 	margin: 10px;
 }
+/************************************************************************* 
+Dashboard 
+*************************************************************************/
+#content{
+    float:left;
+    width: 50vw;
+}
+#post{
+    margin: 10px;
+    padding: 10px;
+    float:left;
+    border: 1px solid #CCCCCC;
+}
+#post button{
+    height: 30px;
+    font-size: 1em;
+    float:right;
+}
+#post span{
+    color:red;
+    font-size: 1.5em;
+}
+#post h2{
+    font-size: 1.5em ;
+}
+#post p{
+    font-size: 1em ;
+}
+#post img{
+    display: block;
+    margin: 0 auto;
+}
 
+.name{
+    font-size: 1.5em
+}
+
+#profile{
+    float:right;
+    border: 1px solid #CCCCCC;
+    width: 20vw;
+    margin: 10px;
+    padding: 10px;
+}
+#profile img{
+    float: left;
+}
+#calendar{
+    float:right;
+    border: 1px solid #CCCCCC;
+    width: 20vw;
+    margin: 10px;
+    padding: 10px;
+}
 #credit {
 
 }
